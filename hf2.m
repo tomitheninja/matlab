@@ -47,10 +47,14 @@ function [min_tav, legkozelebb, max_tav, legtavolabb, atlag_tav, kozel, utvonal]
     kozel = kozel(2:end);
     kozel = sort(kozel);
     
-    % fuck ind2sub
-    % all my homies use matrix multiplication
+    % path:
+    % u(1) u(2)
+    % u(2) u(3)
+    % u(3) u(4)
     path = cat(1, utvonalhoz, [utvonalhoz(2:end) utvonalhoz(end)])';
     path = path(1:end-1, :);
+    % fuck ind2sub
+    % all my homies use matrix multiplication
     idx_of_routes = path * [19;1] - 19;
     distances = tavolsag(idx_of_routes);
     utvonal=sum(distances);

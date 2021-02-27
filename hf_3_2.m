@@ -60,6 +60,7 @@ ok_days = lower_bound <= ys(11:20) & ys(11:20) <= upper_bound;
 num_ok_days = length(find(ok_days));
 elsoSzenzorHelyesMereseiSzovegben = sprintf('Helyes meresi ertekek darabszama (elso szenzor, esti meres, 11-20. napokra): %d', num_ok_days);
 
+% TODO:
 del_234 = squeeze(legnyomasErtekek([2,3,4], 2, :));
 del_234(lower_bound <= del_234 & del_234 <= upper_bound) = 0;
 

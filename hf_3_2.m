@@ -62,7 +62,7 @@ elsoSzenzorHelyesMereseiSzovegben = sprintf('Helyes meresi ertekek darabszama (e
 
 % TODO:
 del_234 = squeeze(legnyomasErtekek([2,3,4], 2, :));
-del_234(lower_bound <= del_234 & del_234 <= upper_bound) = 0;
+del_234(del_234 < lower_bound | upper_bound < del_234) = 0;
 
 m_sum = sum(del_234, 2);
 m_n =  sum(del_234~=0, 2); % count = sum of booleans

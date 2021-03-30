@@ -122,3 +122,54 @@ v(1:2) == [10 15];
 * Bármely szám: `v = zeros([1 5]) + 10`
 * Rand szám: `v = rand([1 5])`
 
+## Mátrixok
+
+```matlab
+m = [1, 2; 3, 4];
+% [1 2]
+% [3 4]
+```
+
+## Gyakori műveletek mátrixokkal:
+
+#### Egy elem lekérése
+
+```matlab
+x = m(1, 2);
+```
+
+#### Több elem lekérése
+
+```matlab
+first_row = m([1 2], 2);
+```
+
+#### Egy sor lekérése
+
+A speciális `:` (all / row) operatár használatával:
+
+```matlab
+first_row = m(:, 2);
+```
+
+#### Trimming
+
+Az első és az utolsó elem elhagyása:
+
+```matlab
+first_row = v(2:end-1);
+```
+
+#### Feltétel az elemeire:
+
+```matlab
+indexes = m > 2;
+```
+
+#### Keresés (vagy szűrés)
+
+```matlab
+filtered = m(indexes);
+% tehát
+filtered = m(m > 2);
+```

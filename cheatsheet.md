@@ -163,13 +163,32 @@ first_row = v(2:end-1);
 #### Feltétel az elemeire:
 
 ```matlab
-indexes = m > 2;
+megfelel_e_a_feltetelnek = m > 2;
 ```
 
-#### Keresés (vagy szűrés)
+#### Szűrés
+
+Csak a feltételnek megfelelő elemek:
 
 ```matlab
-filtered = m(indexes);
-% tehát
 filtered = m(m > 2);
 ```
+
+#### Keresés
+
+Azon elemek indexei, amelyek megfelelnek egy feltételnek.
+
+```matlab
+idxs = find(m > 2); 
+```
+
+Ezzel is megvalósítható a szűrés, de az előző módszer gyorsabb.
+
+#### Frissítés
+
+Az adott indexű elemeknek értéket ad.
+
+```matlab
+m(:, 1) = 0;
+```
+

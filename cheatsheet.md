@@ -1,6 +1,17 @@
 # MatLab cheatsheet
 
-## MatLab cuccok
+# 📝 Table of Contents
+
+- [MatLab cuccok](#matlab)
+- [Adat típusok](#datatypes)
+- [Valós szám](#scalar)
+- [Logikai](#boolean)
+- [Vektorok](#vectors)
+- [Mátrixok](#matrices)
+- [Algorithmusok](#algorithms)
+- [Grafikonok](#graphics)
+
+# MatLab cuccok <a name = "matlab"></a>
 
 Az `ans` változó tárolja a legutóbbi művelet eredményét.
 
@@ -12,7 +23,7 @@ a `help <függvény neve>` parancs megjelenít egy rövíditett dokumentációt.
 
 a `0`-val val való osztáskor hiba dobás helyett, kiszámolja az osztás "határértékét" (`1/0 == Inf`, `-1/0 == -Inf`)
 
-### Konzolra iratás
+#### Konzolra iratás
 
 a `disp(x)` függvénnyel lehet a konzolra írni egy előre megadott értéket: `disp('Hello world!')` , vagy egy változó értékét: `disp(a)`.
 
@@ -20,9 +31,9 @@ Ha nem teszel egy sor végére `;`-őt, akkor annak értéke meg fog jelenni a k
 
 Ennek a trükknek a segítségével és az `sprintf('format string', param1, param2, ...)` függvénnyel lehet változókat tartalmazó szöveget (*=template*) a konzolra iratni: `sprintf('Petinek %d almája van.', num_apples)`.
 
-# Adat típusok
+# Adat típusok <a name = "datatypes"></a>
 
-## Valós szám (=[1x1] mátrix)
+## Valós szám (=[1x1] mátrix) <a name = "scalar"></a>
 
 Jelölés: `3.14`
 
@@ -31,7 +42,7 @@ Jelölés: `3.14`
 * `+`, `-`: összeadás, kivonás
 * `==`, `~=`: egyenlő, nem egyenlő
 
-## Logikai
+## Logikai  <a name = "boolean"></a>
 
 Ez csak egy, a programozó fejében létező dolog. Igazából valós számként van eltárolva és megjelenítve.
 
@@ -51,7 +62,7 @@ legyen bool = egy 0 vagy 1 értéket tároló változó.
 
 `bool || bool` (vagy)
 
-## Vektorok (=[1xn] mátrix)
+## Vektorok (=[1xn] mátrix) <a name = "vectors"></a>
 
 Jelölés: `[1 2 3]` vagy `[1, 2, 3]` (a vessző opcionális)
 
@@ -122,7 +133,7 @@ v(1:2) == [10 15];
 * Bármely szám: `v = zeros([1 5]) + 10`
 * Rand szám: `v = rand([1 5])`
 
-## Mátrixok
+## Mátrixok <a name = "matrices"></a>
 
 ```matlab
 m = [1, 2; 3, 4];
@@ -130,7 +141,7 @@ m = [1, 2; 3, 4];
 % [3 4]
 ```
 
-## Gyakori műveletek mátrixokkal:
+## Gyakori műveletek mátrixokkal: <a name = "algorithms"></a>
 
 #### Egy elem lekérése
 
@@ -209,11 +220,16 @@ A2(A2 == 0) = Inf; % replace zeros with Infinity
 [min_val, min_idx] = min(M) % a szélsőérték indexének (is) lekérdezése
 ```
 
+#### Gauss elemináció
+
+1. Rendezd az egyenletet `A * x = b` alakba.
+2. `x = A\b`
+
 #### Lapítás, Átméretezés
 
 `squeeze(A)` returns an array with the same elements as the input array M, but with dimensions of length 1 removed.
 
-# Grafikonok
+# Grafikonok <a name = "graphics"></a>
 
 ## 1. Figure (rajzvászon)
 
@@ -268,8 +284,3 @@ grid on; % or: axes = gca; axes.FontSize = 12;
 
 legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
 ```
-
-### Gauss elemináció
-
-1. Rendezd az egyenletet `A * x = b` alakba.
-2. `x = A\b`

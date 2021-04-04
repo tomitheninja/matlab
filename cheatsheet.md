@@ -135,18 +135,22 @@ m = [1, 2; 3, 4];
 #### Egy elem lekérése
 
 ```matlab
+% első sor
+% második oszlop
 x = m(1, 2);
 ```
 
 #### Több elem lekérése
 
 ```matlab
-first_row = m([1 2], 2);
+% minden sor
+% második oszlop
+first_row = m([1 end], 2);
 ```
 
 #### Egy sor lekérése
 
-A speciális `:` (all / row) operatár használatával:
+A speciális `:` (all / row) operátor használatával:
 
 ```matlab
 first_row = m(:, 2);
@@ -184,11 +188,83 @@ idxs = find(m > 2);
 
 Ezzel is megvalósítható a szűrés, de az előző módszer gyorsabb.
 
-#### Frissítés
+#### Frissítés, Cserélés
 
 Az adott indexű elemeknek értéket ad.
 
 ```matlab
 m(:, 1) = 0;
+A2(A2 == 0) = Inf; % replace zeros with Infinity
 ```
 
+#### Átlag, Minimum, Maximum
+
+```matlab
+5 == mean([0 5 10])
+
+% melyik dimenzió (irány) mentén fusson le?
+% általában a második dim kell (sorok átlaga)
+[1 15] == mean([0 2; 10 20], 2)
+
+[min_val, min_idx] = min(M) % a szélsőérték indexének (is) lekérdezése
+```
+
+#### Lapítás, Átméretezés
+
+`squeeze(A)` returns an array with the same elements as the input array M, but with dimensions of length 1 removed.
+
+# Grafikonok
+
+## 1. Figure (rajzvászon)
+
+```matlab
+fig = figure;
+```
+
+## 2. Subplot (rácsrendszer) *- opcionális*
+
+```matlab
+subplot(grid_width, grid_height, [use these indexes]);
+```
+
+## 3. Plot (grafikon)
+
+Adottak az azonos hosszúságú xs és ys tömbök.
+
+```matlab
+pl = plot(xs,ys, '<style using code>', <style name>,<style value>, <style name>,<style value>, ...);
+```
+
+### Több vonal
+
+Adottak az azonos hosszúságú xs és ys tömbök.
+
+```matlab
+hold on; % Az előző plot újrafelhasználása a hold off;-ig
+pl1 = plot(xs,ys, '-g', 'LineWidth',2);
+pl2 = plot(xs,ys, '-b', 'LineWidth',2);
+hold off;
+```
+
+### Megadható tulajdonságok
+
+```matlab
+xlim([t(1), t(end)]); % min x, max x
+ylim([-2, 1]); % min y, max y
+
+title('upperLeft', 'FontWeight', 'bold');
+xlabel('t');
+ylabel('y value');
+
+p.Marker = 'square';
+p.MarkerSize = 7;
+p.MarkerEdgeColor = 'red';
+
+p.Color = 'blue';
+p.LineStyle = '--';
+p.LineWidth = 2;
+
+grid on; % or: axes = gca; axes.FontSize = 12;
+
+legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
+```

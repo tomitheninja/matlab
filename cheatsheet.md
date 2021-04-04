@@ -268,3 +268,8 @@ grid on; % or: axes = gca; axes.FontSize = 12;
 
 legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
 ```
+
+### Gauss elemináció
+
+1. Rendezd az egyenletet `A * x = b` alakba.
+2. `x = A\b`

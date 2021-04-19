@@ -141,6 +141,11 @@ m = [1, 2; 3, 4];
 % [3 4]
 ```
 
+```matlab
+a = [1, 2];
+m = [a; 3 4]; % az értékek kimásolása egy másik vektorból
+```
+
 ## Gyakori műveletek mátrixokkal: <a name = "algorithms"></a>
 
 #### Egy elem lekérése

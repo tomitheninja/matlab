@@ -1,3 +1,22 @@
+# 2D ábrázolás
+
+Készíts egy szkriptet, amely az alábbi ábrát állítja elő:
+
+![](https://lcms-files.mathworks.com/content/images/087d804a-3e4f-445f-8a79-877241c0d1eb.png)
+
+ahol minden alábrán időfüggő (t) adatsorokat láthatunk az alábbi összefüggések szerint:
+
+bal felső: 0.5−0.2eln(t)cos(t)
+
+bal alsó: π0.1t−3sin(t)
+
+jobb oldali: cos(t))esin(t)
+
+Kérjük ne feledkezz meg a címekről, feliratokról, a vonal/görbe stílusáról, rácsozásról, tengelyhatárokról.
+
+Megjegyzés: a jobb oldali ábrán a 0-szinten van egy vízszintes, fekete, szaggatott vonal.
+
+```matlab
 t = 2:14;
 s = figure; % the canvas
 % plot 1
@@ -39,3 +58,4 @@ ylim([-1.5, 1.5]);
 title('right', 'FontWeight', 'bold');
 xlabel('t');
 ylabel('y value');
+```

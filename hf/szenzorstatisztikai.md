@@ -112,3 +112,8 @@ m_avg = m_sum./m_n;
 szenzorokDeliMeresenekAtlagaSzovegben = sprintf('A masodik szenzor deli atlaga: %+09.3f, a harmadiknak: %+09.3f es a negyediknek: %+09.3f', m_avg);
 end
 ```
+
+```matlab
+legnyomasErtekek = 900 + round(190*rand(4, 3, 31));
+[fig, hitelesitettMeresiErtekek, elsoSzenzorHelyesMereseiSzovegben, szenzorokDeliMeresenekAtlagaSzovegben] = myFunction(legnyomasErtekek)
+```

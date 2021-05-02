@@ -48,7 +48,7 @@ function [abra, P, x1, x2, y1, y2, r] = gyak5_f51_(a,b,c,d,e,f)
     plot(x1, y1, '-r');
     plot(x2, y2, '-b');
     plot(r, r ~= r, 'k', 'LineStyle', 'none', 'Marker', 'o');
-    plot(x2, x2 ~= x2, '--k');
+    yline(0, '--k');
     legend({'1-es lepeskoz', '0.001-es lepeskoz', 'gyokok'}, 'Location', 'southeast');
     title('Polinom', 'FontSize', 14);
     xlabel('x ertek', 'FontSize', 12, 'FontWeight', 'bold');

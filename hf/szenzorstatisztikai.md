@@ -45,8 +45,8 @@ function [fig, hitelesitettMeresiErtekek, elsoSzenzorHelyesMereseiSzovegben, ...
     xs = squeeze(legnyomasErtekek(1, 1, :));
     verified = 930 <= xs & xs <= 1060;
  
-    plot(t, (t ~= t) + 930, 'm', 'LineWidth', 2);
-    plot(t, (t ~= t) + 1060, 'm', 'LineWidth', 2);
+    yline(930, 'm', 'LineWidth', 2);
+    yline(1060, 'm', 'LineWidth', 2);
  
     plot(...
       t, ...

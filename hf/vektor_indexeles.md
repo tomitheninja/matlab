@@ -12,11 +12,9 @@ Készíts el egy függvényt az alábbiak szerint:
 function [c,d,e,f] = vectorIndexing1(x,y)
     a = y(1);
     b = y(2);
-    is_in_interval = a <= x & x <= b;
-    c = x(is_in_interval);
+    c = x(a <= x & x <= b);
     d = mean(c);
-    [val, idx] = max(c);
-    e = [val, idx];
+    [e(1) e(2)] = max(c);
     f = length(c);
 end
 ```

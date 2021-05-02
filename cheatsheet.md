@@ -285,7 +285,9 @@ p.Color = 'blue';
 p.LineStyle = '--';
 p.LineWidth = 2;
 
-grid on; % or: axes = gca; axes.FontSize = 12;
+grid on;
+
+axes = gca; axes.FontSize = 12; % tengelyek értékeinek felirata
 
 legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
 ```

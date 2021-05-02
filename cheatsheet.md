@@ -33,6 +33,28 @@ Ennek a trükknek a segítségével és az `sprintf('format string', param1, par
 
 # Adat típusok <a name = "datatypes"></a>
 
+## Szöveg
+
+### sprintf (template string)
+
+A szövegbe változók értékét lehet vele elhelyezni.
+
+Formázási beállítások:
+
+_Ami szögletes zárójelben van, az elhagyható_ 
+
+```
+változó jelölése: "%"
+[mindig legyen előjel: "+"]
+[a kellő számjegyet szóköz helyett nullával töltse fel: "0"]
+[a generált szöveg hossza: 123]
+[tizedes pont: "."]
+[törtjegyek száma: 123]
+változó típusa:
+ valós szám: "f"
+ egész szám: "d"
+```
+
 ## Valós szám (=[1x1] mátrix) <a name = "scalar"></a>
 
 Jelölés: `3.14`

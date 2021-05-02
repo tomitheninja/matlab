@@ -9,21 +9,20 @@ Készíts egy függvényt, aminek egyetlen bemenete egy A mátrix lesz (dimenzi�
 Hasznos lehet: squeeze, kettőspont operátor, max, sum, min, mean.
 
 ```matlab
-function [B,C,d,e]=myFunction(A)
-    
-B = A(:, 1, :);
-B = squeeze(B);
-C = A(:, 2, :);
-C = squeeze(C);
-
-maxs_of_row = max(B');
-d = sum(maxs_of_row);
-
-mins_of_col = cummin(C); % Could be solved with min(B'), but I have a bias against cummin
-mins_of_col = mins_of_col(end, :);
-e = mean(mins_of_col);
-    
+	
+function [B, C, d, e] = myFunction(A)
+ 
+    B = squeeze(A(:, 1, :));
+    C = squeeze(A(:, 2, :));
+ 
+    d = sum(max(B'));
+    e = mean(min(C));
+ 
 end
+
+% mins_of_col = cummin(C); % this is the way
+% mins_of_col = mins_of_col(end, :);
+% e = mean(mins_of_col);
 ```
 
 ```matlab

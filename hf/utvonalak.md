@@ -32,36 +32,24 @@ Lásd még: ind2sub, sub2ind, sort
 
 ```matlab
 function [min_tav, legkozelebb, max_tav, legtavolabb, atlag_tav, kozel, utvonal] = varos_tavok(tavolsag, varos, x, utvonalhoz)
-    A2 = tavolsag;
-    A2(A2 == 0) = Inf;
-    
-    [min_tav, min_city1_idx]=min(min(A2));
-    from_min = A2(:, min_city1_idx);
-    [~, min_city2_idx]=min(from_min);
-    legkozelebb = sort([ varos(min_city1_idx) varos(min_city2_idx) ]);
-    
-    [max_tav, max_city1_idx]=max(max(tavolsag));
-    from_max = tavolsag(:, max_city1_idx);
-    [~, max_city2_idx]=max(from_max);
-    legtavolabb = sort([ varos(max_city1_idx) varos(max_city2_idx) ]);
-    atlag_tav=sum(sum(tavolsag))/(18*19);
-    dist_from_bp = tavolsag(1, :);
-    kozel = varos(dist_from_bp < x);
-    kozel = kozel(2:end);
-    kozel = sort(kozel);
-    
-    path = cat(1, utvonalhoz, [utvonalhoz(2:end) utvonalhoz(end)])';
-    path = path(1:end-1, :);
-    idx_of_routes = path * [19;1] - 19;
-    distances = tavolsag(idx_of_routes);
-    utvonal=sum(distances);
+    min_tav = min(tavolsag(tavolsag ~= 0));
+    [min_idx, ~] = find(tavolsag == min_tav);
+    legkozelebb = sort(varos(min_idx));
+    max_tav = max(tavolsag, [], 'all');
+    [max_idx, ~] = find(tavolsag == max_tav);
+    legtavolabb = sort(varos(max_idx));
+    atlag_tav = mean(tavolsag(tavolsag ~= 0), 'all');
+    kozel = sort(varos(0 < tavolsag(1, :) & tavolsag(1, :) <= x));
+    honnan = utvonalhoz(1:end - 1);
+    hova = utvonalhoz(2:end);
+    utvonal = sum(tavolsag(sub2ind(size(tavolsag), honnan, hova)));
 end
 ```
 
 
 ```matlab
 varos={'Budapest' 'Békéscsaba' 'Debrecen' 'Eger' 'Győr'	'Kaposvár' 'Kecskemét'...
-    'Miskolc' 'Nyí­regyháza' 'Pécs' 'Salgótarján' 'Szeged' 'Székesfehérvár'...
+    'Miskolc' 'Nyíregyháza' 'Pécs' 'Salgótarján' 'Szeged' 'Székesfehérvár'...
     'Szekszárd'	'Szolnok' 'Szombathely' 'Tatabánya' 'Veszprém' 'Zalaegerszeg'};
 tavolsag=[...
 0	216	231	158	126	189	81	177	234	205	109	165	67	153	108	231	62	111	233;...

@@ -420,6 +420,8 @@ surf(X, Y, Z);
 - `surfc(X, Y, Z)` = surface, alatta (a síkon) egy contour leképzés
 - `mesh(X, Y, Z)` = átlátszóbb surface
 
+`hold on;` módban tetszőlegesen mixelhető, de némelyik mód elbassza a `view`-t.
+
 # Struktúrák <a name = "structs"></a>
 
 ## Cellatömb

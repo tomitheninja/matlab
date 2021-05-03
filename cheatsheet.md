@@ -12,6 +12,7 @@
 - [Grafikonok](#graphics)
 - [Analízis](#calculus)
 - [3D ábrázolás](#3d)
+- [Struktúrák](#structs)
 
 # MatLab cuccok <a name = "matlab"></a>
 
@@ -394,3 +395,17 @@ surf(X, Y, Z);
 - `contour3(X, Y, Z)` = domborzati térkép (de 3D-ben)
 - `surfc(X, Y, Z)` = surface, alatta (a síkon) egy contour leképzés
 - `mesh(X, Y, Z)` = átlátszóbb surface
+
+# Struktúrák <a name = "structs"></a>
+
+## Cellatömb
+
+Egy axb méretű mátrix, amelynek elemei nem azonos típusúak (lehet benne szám, szöveg vagy igazából bármi és vegyesen is)
+
+```matlab
+cellaTomb = {
+  t, [], []; ... % egy változó értéke, majd két üres cella
+  'alma', 'fa', '11'; ... % szöveges adatok
+  3, 4, 5 ... % számok
+};
+```

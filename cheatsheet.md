@@ -5,7 +5,7 @@
 - [MatLab cuccok](#matlab)
 - [Adat típusok](#datatypes)
 - [Valós szám](#scalar)
-- [Logikai](#boolean)
+- [Logikai](#boolea3n)
 - [Vektorok](#vectors)
 - [Mátrixok](#matrices)
 - [Algorithmusok](#algorithms)
@@ -420,7 +420,16 @@ surf(X, Y, Z);
 - `surfc(X, Y, Z)` = surface, alatta (a síkon) egy contour leképzés
 - `mesh(X, Y, Z)` = átlátszóbb surface
 
+#### Vegyítés
+
 `hold on;` módban tetszőlegesen mixelhető, de némelyik mód elbassza a `view`-t.
+
+Gyakori probléma, a domborzati térkép feliratozása:
+
+```matlab
+[C, h] = contour3(X, Y, Z);
+clabel(C, h);
+```
 
 # Struktúrák <a name = "structs"></a>
 

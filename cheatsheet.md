@@ -13,6 +13,7 @@
 - [Analízis](#calculus)
 - [3D ábrázolás](#3d)
 - [Struktúrák](#structs)
+- [Fájlok](#files)
 
 # MatLab cuccok <a name = "matlab"></a>
 
@@ -486,3 +487,47 @@ strukturaTomb = [ ...
     struct('x', t, 'y', cos(5*t), 'nev', 'Cos(5x)') ...
     struct('x', t, 'y', sin(3*t) .* cos(5*t), 'nev', 'Sin(3x)*Cos(5x)')];
 ```
+
+# Fájlok <a name="files"></a>
+
+## Adat olvasása / írása
+
+```matlab
+% Tell the system how to open the file
+fIn = fopen(bemenetiFajlNev, 'r');
+  % r = read (default)
+  % w = write
+  % a = append
+  % ... in help fopen
+
+% N adat beolvasása (több dimenzió esetén a mátrix külön sorába teszi őket) 
+% [21 inf] jelentése = 21 oszlop, az összes sor
+data = fscanf(fIn, '%f', [6]);
+  % '%f' = float (valós szám)
+  % '%d' = digit
+  % ... in help fscanf
+
+  
+% adatok írása fájlba. jajj
+fwrite(fOut, data, dataType?);
+  % ... help write / precision
+  
+% ##### NE FELEJTSD EL BEZÁRNI A FÁJLT #####
+fclose(fIn);
+```
+
+## Változó mentése .m fájlba
+
+Egy paranccsal el lehet menteni egy változó állapotát
+
+Ugyan ilyen könnyen vissza lehet tölteni azt
+
+```matlab
+myVarName = magic(3);
+save('filename.mat', 'myVarName'); % lementi a 'myVarName' nevű változó értékét a fájlba
+
+clear; % kitörli a program memóriáját
+
+load('filename.mat'); % betölti a fájlba elmentett változókat
+```
+

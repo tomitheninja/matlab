@@ -378,6 +378,8 @@ integral(@(t) 2*t, domain(1), domain(end))
 
 - To plot multiple **sets of coordinates** on the same set of axes, specify at least one of X, Y, or Z **as a matrix** and the others as vectors.
 
+- én sem értem, hogy miről pofázik. Minden esetre, ha megadsz Stylenak egy '.'-ot, akkor pont halmaz lesz belőle.
+
 ```matlab
 figure;
 t = 0:pi/50:10*pi;

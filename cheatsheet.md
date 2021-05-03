@@ -364,3 +364,26 @@ xlabel('x = sin(t)');
 ylabel('y = cos(t)');
 zlabel('z = t');
 ```
+
+## Felület
+
+Az alábbi megoldások mindegyike azon alapszik, hogy kifeszítűnk a térben egy XY síkot és ehhez rendelünk egy harmadik pontot.
+
+Egy téglalap alakú síkot a `meshgrid(t_x, t_y)` függvény hozza létre.
+
+A meshgrid mind a kettő bemenete egy intervallumot vár, amely megadja, hogy a sík ezen a tengelyen mettől-meddig nyúljon.
+
+Leggyakrabban a `linspace(mettől, meddig, hányPont)` függvényhívással szoktuk jellemezni a tengelyt.
+
+A meshgrid függvénynek két kimete van, az `[X, Y]` változók. A Z változót ebből kell majd kifejezni.
+
+### Egyszerű felület
+
+```matlab
+[X, Y] = meshgrid(linspace(0, 10, 100), linspace(0, 15, 100)); % 100 pontból álló 0-től 10-ig terjedő tengelyek
+Z = sin(-X) ./ X; % a harmadik koodináta kifejezése az előző kettőből
+surf(X, Y, Z);
+```
+
+
+

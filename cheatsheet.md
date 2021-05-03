@@ -409,3 +409,45 @@ cellaTomb = {
   3, 4, 5 ... % számok
 };
 ```
+
+Így lehet lekérni egy elemét:
+```matlab
+myFour = cellaTomb{3, 2};
+```
+
+## Struktúra
+
+Cellatömb, de nem index alapú indexeléssel.
+
+Szóval az mint c++ struct, de nem kell előre definiálni
+
+```c++
+// c++
+struct XYNev
+{
+  int x;
+  int y;
+  string nev;
+};
+
+XYNev aPontom{ x=0, y=0, nev="Origo" };
+
+cout << aPontom.nev << endl;
+```
+
+```matlab
+% matlab
+aPontom = struct('x', 0, 'y', 0, 'nev', 'Origo');
+disp(aPontom.nev);
+```
+
+## Struktúra tömb
+
+Leggyakrabban nem csak egy struktúrát akarunk létrehozni, hanem sokat, egyszerre
+
+```matlab
+strukturaTomb = [ ...
+    struct('x', t, 'y', sin(3*t), 'nev', 'Sin(3x)') ...
+    struct('x', t, 'y', cos(5*t), 'nev', 'Cos(5x)') ...
+    struct('x', t, 'y', sin(3*t) .* cos(5*t), 'nev', 'Sin(3x)*Cos(5x)')];
+```

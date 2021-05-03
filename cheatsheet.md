@@ -10,6 +10,7 @@
 - [Mátrixok](#matrices)
 - [Algorithmusok](#algorithms)
 - [Grafikonok](#graphics)
+- [Analízis](#calculus)
 
 # MatLab cuccok <a name = "matlab"></a>
 
@@ -312,4 +313,33 @@ grid on;
 axes = gca; axes.FontSize = 12; % tengelyek értékeinek felirata
 
 legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
+```
+
+# Analízis <a name = "calculus"></a>
+
+## Deriválás
+
+Matematikai def.: Két mérési pont közötti érték különbség és idő különbség hányadosa (dx / dt)
+
+A számolásban segítséghet a `diff(vector, nth_derivate?, dimension?)` függvény, amely megadja az egymás után mért értékek közötti különbségét.
+
+## Integrálás - geometriailag
+
+A módszer lényege, hogy a függvény alatti területet a t intervallumon tetszőleges számú téglalap területével számolja ki.
+
+**CSAK AZONOS SZÉLESSÉGŰ TÉGLALAPOKKAL MŰKÖDIK**
+
+```matlab
+t = linspace(-5, 5, 1000);
+dt = t(2) - t(1); % csak azonos méretű téglalapok esetén!
+sum(f(t)  .* dt)
+```
+## Integrálás - függvény
+
+Sokkal pontosabb eredményt ad, mint az előző módszer.
+
+Csak akkor működik, ha ismert a függvény
+
+```matlab
+integral(@(t) 2*t, domain(1), domain(end))
 ```

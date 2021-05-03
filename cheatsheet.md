@@ -36,6 +36,28 @@ Ha nem teszel egy sor végére `;`-őt, akkor annak értéke meg fog jelenni a k
 
 Ennek a trükknek a segítségével és az `sprintf('format string', param1, param2, ...)` függvénnyel lehet változókat tartalmazó szöveget (*=template*) a konzolra iratni: `sprintf('Petinek %d almája van.', num_apples)`.
 
+# Vezérlő utasítások
+
+## If-Else
+
+```matlab
+if r == c
+  disp('1');
+elseif abs(r-c) == 1
+  disp('2');
+else
+  disp('0');
+end
+```
+
+## For ciklus
+
+```matlab
+for i = 1:10
+  disp(i);
+end
+```
+
 # Adat típusok <a name = "datatypes"></a>
 
 ## Szöveg

@@ -25,6 +25,8 @@ a `help <függvény neve>` parancs megjelenít egy rövíditett dokumentációt.
 
 a `0`-val val való osztáskor hiba dobás helyett, kiszámolja az osztás "határértékét" (`1/0 == Inf`, `-1/0 == -Inf`)
 
+a label és title függvények képesek latex módban is működni: `f(..., 'interpreter', 'latex')`
+
 #### Konzolra iratás
 
 a `disp(x)` függvénnyel lehet a konzolra írni egy előre megadott értéket: `disp('Hello world!')` , vagy egy változó értékét: `disp(a)`.
@@ -385,5 +387,10 @@ Z = sin(-X) ./ X; % a harmadik koodináta kifejezése az előző kettőből
 surf(X, Y, Z);
 ```
 
+### Megjelenítési formák
 
-
+- `surf(X, Y, Z)` = surface (felület)
+- `contour(X, Y, Z)` = domborzati térkép (felülnézetben)
+- `contour3(X, Y, Z)` = domborzati térkép (de 3D-ben)
+- `surfc(X, Y, Z)` = surface, alatta (a síkon) egy contour leképzés
+- `mesh(X, Y, Z)` = átlátszóbb surface

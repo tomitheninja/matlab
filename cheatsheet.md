@@ -11,6 +11,7 @@
 - [Algorithmusok](#algorithms)
 - [Grafikonok](#graphics)
 - [Analízis](#calculus)
+- [3D ábrázolás](#3d)
 
 # MatLab cuccok <a name = "matlab"></a>
 
@@ -342,4 +343,24 @@ Csak akkor működik, ha ismert a függvény
 
 ```matlab
 integral(@(t) 2*t, domain(1), domain(end))
+```
+
+# 3D ábrázolás <a name = "3d"></a>
+
+## Pontok vagy vonalak
+
+- To plot a set of coordinates connected by **line segments**, specify X, Y, and Z **as vectors** of the same length.
+
+- To plot multiple **sets of coordinates** on the same set of axes, specify at least one of X, Y, or Z **as a matrix** and the others as vectors.
+
+```matlab
+figure;
+t = 0:pi/50:10*pi;
+st = t .* sin(2*t);
+ct = t .* cos(2*t);
+plot3(st,ct,t);
+title('fagyi');
+xlabel('x = sin(t)');
+ylabel('y = cos(t)');
+zlabel('z = t');
 ```

@@ -72,10 +72,11 @@ end
 
 A feladat reszpontjai:
 
-a) 5/5p
-b) 5/5p
-c) 2.5/5p
-d) 5/5p
-e) 2/5p
-f) 9.5/10p
+1. 5/5p
+2. 5/5p
+3. 2.5/5p
+4. 5/5p
+5. 2/5p
+6. 9.5/10p
+
 Osszesen: 29/35p

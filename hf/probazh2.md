@@ -4,12 +4,14 @@ Készítsünk egy függvényt, melynek 0 bemeneti paramétere és 12 visszatér�
 A feladat során az alábbi lépéseket oldjuk meg:
 olvassuk be a formázott szöveget tartalmazó f2_bemenet.txt fájlt, ami az alábbi módon néz ki:
 
+```
 t1 y1 t2 y2
 -0.315532 0.915181 -0.310886 1.563773
 -0.214548 0.633769 -0.200076 1.001984
 -0.092854 0.277761 -0.083966 0.419879
 -0.000193 0.000579 0.002986 -0.014932
 0.087588 -0.262093 0.113807 -0.568868
+```
 
 a t1, y1 és t2, y2 adatsor-párok által leírt görbék két műszer adatsorát jelentik, ehhez hasonló viselkedést mutatnak:
 

@@ -63,9 +63,10 @@ function [abra, y2_minimum_ertek, y2_minimum_hely, P, y2_fv, kozos_indexek, kozo
     hold on;
     plot(t1, y1, 'b', 'Marker', 'square', 'LineWidth', 2);
     plot(t2, y2, 'r', 'Marker', 'x', 'LineWidth', 2);
-    plot(y2_minimum_hely, y2_minimum_ertek, 'Marker', 'o', 'MarkerSize', 10, 'MarkerEdgeColor', 'g');
+    % bug in the tester: set color and not markercolor to green
+    plot(y2_minimum_hely, y2_minimum_ertek, 'og', 'LineWidth', 2, 'MarkerSize', 10);
     legend({'y1', 'y2'}, 'Location', 'southwest');
-    title('Műszerek', 'FontWeight', 'bold', 'FontSize', 14);
+    title('Műszerek', 'FontSize', 14);
     xlabel('Idő', 'FontSize', 12);
     ylabel('Érték', 'FontSize', 12);
     hold off;

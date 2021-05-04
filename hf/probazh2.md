@@ -76,7 +76,7 @@ A feladat reszpontjai:
 2. 5/5p
 3. 5/5p
 4. 5/5p
-5. 3/5p
+5. 5/5p
 6. 9.5/10p
 
 Osszesen: 34.5/35p

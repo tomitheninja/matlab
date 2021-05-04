@@ -49,19 +49,19 @@ function [abra, y2_minimum_ertek, y2_minimum_hely, P, y2_fv, kozos_indexek, kozo
     y2 = ft{:, 4};
     [y2_minimum_ertek, y2minIdx] = min(y2);
     y2_minimum_hely = t2(y2minIdx);
-    y2_fv = @(t, y) polyfit(t, y, 4);
-    P = y2_fv(t2, y2);
+    P = polyfit(t2, y2, 4);
+    y2_fv = @(x) polyval(P, x);
     kozos_indexek = y2 < y1;
     kozos_t = t1(kozos_indexek);
     elso_t = kozos_t(1);
     utolso_t = kozos_t(end);
     T1 = trapz(kozos_t, y1(kozos_indexek));
-    T2 = 123;
+    T2 = integral(y2_fv, elso_t, utolso_t);
     T = abs(T1-T2);
     hold on;
     plot(t1, y1, 'b', 'Marker', 'square', 'LineWidth', 2);
     plot(t2, y2, 'r', 'Marker', 'x', 'LineWidth', 2);
-    plot(y2_minimum_hely, y2_minimum_ertek, 'LineStyle', 'none', 'LineWidth', 2, 'Marker', 'o', 'MarkerEdgeColor', 'g', 'MarkerSize', 10);
+    plot(y2_minimum_hely, y2_minimum_ertek, 'Marker', 'o', 'MarkerSize', 10, 'MarkerEdgeColor', 'g');
     legend({'y1', 'y2'}, 'Location', 'southwest');
     title('Műszerek', 'FontWeight', 'bold', 'FontSize', 14);
     xlabel('Idő', 'FontSize', 12);
@@ -74,9 +74,9 @@ A feladat reszpontjai:
 
 1. 5/5p
 2. 5/5p
-3. 2.5/5p
+3. 5/5p
 4. 5/5p
-5. 2/5p
+5. 3/5p
 6. 9.5/10p
 
-Osszesen: 29/35p
+Osszesen: 34.5/35p

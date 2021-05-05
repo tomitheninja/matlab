@@ -5,7 +5,7 @@
 - [MatLab cuccok](#matlab)
 - [Adat típusok](#datatypes)
 - [Valós szám](#scalar)
-- [Logikai](#boolea3n)
+- [Logikai](#boolean)
 - [Vektorok](#vectors)
 - [Mátrixok](#matrices)
 - [Algorithmusok](#algorithms)
@@ -350,16 +350,14 @@ Matematikai def.: Két mérési pont közötti érték különbség és idő kü
 
 A számolásban segítséghet a `diff(vector, nth_derivate?, dimension?)` függvény, amely megadja az egymás után mért értékek közötti különbségét.
 
-## Integrálás - geometriailag
+## Integrálás - adatsor
 
-A módszer lényege, hogy a függvény alatti területet a t intervallumon tetszőleges számú téglalap területével számolja ki.
-
-**CSAK AZONOS SZÉLESSÉGŰ TÉGLALAPOKKAL MŰKÖDIK**
+Ha van N darab x adatunk és N darab Y adatunk, akkor a MatLab az adatok közötti résekre trapézokat tud illeszeni és így meg tudja határozni az adatok által leírt függény alatti területet.
 
 ```matlab
-t = linspace(-5, 5, 1000);
-dt = t(2) - t(1); % csak azonos méretű téglalapok esetén!
-sum(f(t)  .* dt)
+xs = 0:0.001:10; % ez egy vektor
+ys = sin(xs); % ez is egy vektor
+area = trapz(xs, ys);
 ```
 ## Integrálás - függvény
 

@@ -3,16 +3,25 @@
 # 📝 Table of Contents
 
 - [MatLab cuccok](#matlab)
+- [Vezérlő utasítások](#stmts)
 - [Adat típusok](#datatypes)
-- [Valós szám](#scalar)
-- [Logikai](#boolean)
-- [Vektorok](#vectors)
-- [Mátrixok](#matrices)
+  - [Valós szám](#scalar)
+  - [Logikai](#boolean)
+  - [Vektorok](#vectors)
+  - [Mátrixok](#matrices)
 - [Algorithmusok](#algorithms)
 - [Grafikonok](#graphics)
 - [Analízis](#calculus)
+  - [Deriválás](#calculus)
+  - [Integrálás - adatsor](#integrate1)
+  - [Integrálás - függvény](#integrate2)
 - [3D ábrázolás](#3d)
+  - [Ponthalmaz](#3ddots)
+  - [Felület](#3dsurf)
 - [Struktúrák](#structs)
+  - [Cellatömb](#cellarray)
+  - [Struktúra](#struct)
+  - [StruktúraTömb](#structArray)
 - [Fájlok](#files)
 
 # MatLab cuccok <a name = "matlab"></a>
@@ -37,7 +46,7 @@ Ha nem teszel egy sor végére `;`-őt, akkor annak értéke meg fog jelenni a k
 
 Ennek a trükknek a segítségével és az `sprintf('format string', param1, param2, ...)` függvénnyel lehet változókat tartalmazó szöveget (*=template*) a konzolra iratni: `sprintf('Petinek %d almája van.', num_apples)`.
 
-# Vezérlő utasítások
+# Vezérlő utasítások <a name = "stmts"></a>
 
 ## If-Else
 
@@ -344,13 +353,13 @@ legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
 
 # Analízis <a name = "calculus"></a>
 
-## Deriválás
+## Deriválás <a name = "derivates"></a>
 
 Matematikai def.: Két mérési pont közötti érték különbség és idő különbség hányadosa (dx / dt)
 
 A számolásban segítséghet a `diff(vector, nth_derivate?, dimension?)` függvény, amely megadja az egymás után mért értékek közötti különbségét.
 
-## Integrálás - adatsor
+## Integrálás - adatsor <a name = "integrate1"></a>
 
 Ha van N darab x adatunk és N darab Y adatunk, akkor a MatLab az adatok közötti résekre trapézokat tud illeszeni és így meg tudja határozni az adatok által leírt függény alatti területet.
 
@@ -359,7 +368,7 @@ xs = 0:0.001:10; % ez egy vektor
 ys = sin(xs); % ez is egy vektor
 area = trapz(xs, ys);
 ```
-## Integrálás - függvény
+## Integrálás - függvény <a name = "integrate2"></a>
 
 Sokkal pontosabb eredményt ad, mint az előző módszer.
 
@@ -371,7 +380,7 @@ integral(@(t) 2*t, domain(1), domain(end))
 
 # 3D ábrázolás <a name = "3d"></a>
 
-## Pontok vagy vonalak
+## Pontok vagy vonalak <a name = "3ddots"></a>
 
 - To plot a set of coordinates connected by **line segments**, specify X, Y, and Z **as vectors** of the same length.
 
@@ -391,7 +400,7 @@ ylabel('y = cos(t)');
 zlabel('z = t');
 ```
 
-## Felület
+## Felület <a name="3dsurf"></a>
 
 Az alábbi megoldások mindegyike azon alapszik, hogy kifeszítűnk a térben egy XY síkot és ehhez rendelünk egy harmadik pontot.
 
@@ -432,7 +441,7 @@ clabel(C, h);
 
 # Struktúrák <a name = "structs"></a>
 
-## Cellatömb
+## Cellatömb <a name = "cellarray"></a>
 
 Egy axb méretű mátrix, amelynek elemei nem azonos típusúak (lehet benne szám, szöveg vagy igazából bármi és vegyesen is)
 
@@ -449,7 +458,7 @@ cellaTomb = {
 myFour = cellaTomb{3, 2};
 ```
 
-## Struktúra
+## Struktúra <a name = "struct"></a>
 
 Cellatömb, de nem index alapú indexeléssel.
 
@@ -475,7 +484,7 @@ aPontom = struct('x', 0, 'y', 0, 'nev', 'Origo');
 disp(aPontom.nev);
 ```
 
-## Struktúra tömb
+## Struktúra tömb <a name = "structArray"></a>
 
 Leggyakrabban nem csak egy struktúrát akarunk létrehozni, hanem sokat, egyszerre
 

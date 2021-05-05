@@ -12,9 +12,10 @@
 - [Algorithmusok](#algorithms)
 - [Grafikonok](#graphics)
 - [Analízis](#calculus)
-  - [Deriválás](#calculus)
+  - [Deriválás](#derivate)
   - [Integrálás - adatsor](#integrate1)
   - [Integrálás - függvény](#integrate2)
+  - [Differenciál egyenletek](#diffequation)
 - [3D ábrázolás](#3d)
   - [Ponthalmaz](#3ddots)
   - [Felület](#3dsurf)
@@ -353,7 +354,7 @@ legend({'zsakmany', 'ragadozo'}, 'Location', 'northeast');
 
 # Analízis <a name = "calculus"></a>
 
-## Deriválás <a name = "derivates"></a>
+## Deriválás <a name = "derivate"></a>
 
 Matematikai def.: Két mérési pont közötti érték különbség és idő különbség hányadosa (dx / dt)
 
@@ -377,6 +378,64 @@ Csak akkor működik, ha ismert a függvény
 ```matlab
 integral(@(t) 2*t, domain(1), domain(end))
 ```
+
+## Differenciál egyenletek <a name = "diffequation"></a>
+
+Amíg a függvény az egy `x -> y` leképzés, a DE-ek a függvény előző értékéből adják meg a következő felvett értéket.
+
+#### ode45
+
+Az ode45 függvény visszaállítja a függvényt a tspan intervallumban a differenciálegyenletből.
+
+Továbbá meg kell neki adni az `y0=f(t_start)` értéket is
+
+```matlab
+ode45(diff_eq, [t_start t_end], y0);
+```
+
+## Első rendű diff. egyenlet
+
+1. meg lesz adva valami egyenlet.
+
+def.: `y' = dy/dt`
+
+2. rendezd az egyenletet a következő alakra: `y' = ...`
+
+3. készíts egy anon függvényt: `f = @(t, y) ...`, ahol a három pont a felső egyenlet jobb oldala.
+
+A függvény t paraméterér szinte biztosan nem fogod használni!
+
+4. hívd meg az ode45 függvényt, ami kiszámít néhány pontot a tspan intervallumon és visszaadja ezeket
+
+`[T, Y] = ode45(f, tspan, y0);`
+
+(a T az x tengely, az Y az f(T))
+
+## Vegyes diff. egyenletek
+
+A [préda-ragadozó feladatban](https://github.com/tomitheninja/matlab/blob/master/hf/ragadozo_zsakmany.md) volt ilyen.
+
+Lényege, hogy a változás egy másik de. egyenlet megoldásától is függ.
+
+Emiatt ahelyett, hogy külön-külön meghívnád az ode45-öt a két függvényre, egy függvényként kell azt kezelni.
+
+Ezt úgy lehet elérni, hogy az y helyén egy két (vagy több) elemű vektort használsz
+
+```matlab
+t = [0, 20]; % t_start = 0; t_end = 20
+y_0 = [100, 150]; % y1_0 = 100; y2_0 = 150
+
+ fv = @(t, y) [1-y(2)/300; -1+y(1)/200] .* y; % y egy vektor
+ [T, Y] = ode45(fv, t, y_0);
+ Y1 = Y(:, 1); % az első függvény értékei
+ Y2 = Y(:, 2); % a második függvény értékei
+ ```
+ 
+ ## Másodrendű DE-ek
+ 
+ Ha y második deriváltja is szerepel benne
+ 
+ próbálj meg [innen](https://moodle.ppke.hu/pluginfile.php/20734/mod_resource/content/2/06_lab_matlab_2021.pdf) másolni 
 
 # 3D ábrázolás <a name = "3d"></a>
 

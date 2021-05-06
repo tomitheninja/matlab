@@ -475,8 +475,12 @@ A meshgrid függvénynek két kimete van, az `[X, Y]` változók. A Z változót
 
 ```matlab
 [X, Y] = meshgrid(linspace(0, 10, 100), linspace(0, 15, 100)); % 100 pontból álló 0-től 10-ig terjedő tengelyek
+% az X és Y mátrixok, ezért minden műveletet (+, -, *, /, ^) előjelezni kell egy ponttal
 Z = sin(-X) ./ X; % a harmadik koodináta kifejezése az előző kettőből
 surf(X, Y, Z);
+
+view(param1, param2); % látószög beállítása
+
 ```
 
 ### Megjelenítési formák

@@ -397,7 +397,7 @@ ode45(diff_eq, [t_start t_end], y0);
 
 1. meg lesz adva valami egyenlet.
 
-def.: `y' = dy/dt`
+def.: `y' = dy/dt` (lehet be kell helyettesítened)
 
 2. rendezd az egyenletet a következő alakra: `y' = ...`
 
@@ -436,6 +436,35 @@ y_0 = [100, 150]; % y1_0 = 100; y2_0 = 150
  Ha y második deriváltja is szerepel benne
  
  próbálj meg [innen](https://moodle.ppke.hu/pluginfile.php/20734/mod_resource/content/2/06_lab_matlab_2021.pdf) másolni 
+
+#### konstans szorzók:
+
+ennek a változónak -> ez a szorzója
+
+```
+x'' -> m % ezzel le kell majd osztani a teljes egyenlőséget
+x'  -> A % = y(2)
+x   -> B % = y(1)
+1   -> C
+```
+
+#### Az egyenlet rendezése
+
+`m * x'' = C - A*x' - B*x` : x másodrendű deriváltjának kifejezése
+
+`x'' = C/m - A*x'/m - B*x/m` : y vektor használata
+
+`[y(2); C/m - A*y(2)/m - B*y(1)/m]` : ezt már meg tudja oldani a MatLab
+
+#### MatLab
+
+```matlab
+f = @(~, y) [y(2); C/m - A*y(2)/m - B*y(1)/m];
+tspan = [0 250];
+y0 = 1; // X
+dy0 = 0.2; // X'
+[T, Y] = ode45(F, [0 250], [y0 dy0]);
+```
 
 # 3D ábrázolás <a name = "3d"></a>
 

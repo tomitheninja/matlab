@@ -1,5 +1,9 @@
 # MatLab cheatsheet
 
+[Konzim](https://youtu.be/c-NzEwUjpAE)
+
+[Összesített diák](https://users.itk.ppke.hu/~sudta/matlab.pdf)
+
 # 📝 Table of Contents
 
 - [MatLab cuccok](#matlab)

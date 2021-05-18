@@ -1,3 +1,5 @@
+# 2021/ZH 1/I.
+
 Olvasd be az adatfajl.xlsx, a sorfajl.xlsx és az oszlopfajl.xlsx fájlok tartalmát, és tedd az adatokat rendre az adat nevű, táblázat típusú változóba, valamint a sorok és az oszlopok nevű változóba! (Figyelj rá, hogy adatfajl, sorfajl, ill. oszlopfajl nem maguk a fájlnevek, hanem változók, amelyek a fájlneveket – kiterjesztés nélkül – tartalmazzák!)
 
 ```matlab
@@ -95,5 +97,93 @@ i3 = s(1)-3:s(1);
 idx = unique([i1, i2, i3]);
 fwrite(fOut, A(:, idx), 'double');
 fclose(fOut);
+end
+```
+
+# 2021/ZH 1/II.
+
+Hozz létre egy (x) vektort a(z) [0.0, 14.5] intervallumon 0.055 lépésközzel. Készíts el három vektort (f1, f2, f3) a ,  és  függvények alapján!
+Hozz létre egy figure-t, három egymás melletti alábrával.
+Hozd létre az első alábrát (p1) és rajzold ki az f1 függvényt x függvényében szaggatott vonallal, x markerrel és magenta színnel. A vonal szélessége legyen 1.5. Az alábra -tengelyére -et, -tengelyére pedig a függvényt írd ki. Használj tizedespontot! A szorzást külön ne írd ki a feliratban és a függvény neve ne legyen dőlt betű. Mindkét esetben használj LaTeX interpretert!
+Hozd létre a második alábrát (p2). Az alábrák sorendjét sorfolytonosan értjük! Rajzold ki az f2 függvényt x függvényében szaggatott-pontozott vonallal, rombusz (gyémánt) markerrel és piros színnel. A vonal szélessége legyen 1.2. Az alábra -tengelyére -et, -tengelyére pedig a függvényt írd ki. Használj tizedespontot!A szorzást külön ne írd ki a feliratban és a függvény neve ne legyen dőlt betű. Mindkét esetben használj LaTeX interpretert!
+Hozd létre a harmadik alábrát (p3) és rajzold ki az összes függvényt x függvényében. Figyelj a plotok sorrendjére, legyenek rendre f1, f2, f3 (mint a mellékelt ábrán)! Az f3 függvényt pontozott vonallal, négyzet markerrel és zöld színnel ábrázold, f1-et és f2-t pedig az előző alábráknak megfelelően! A vonal szélessége legyen 1.3. Az alábra  tengelyére -et,  tengelyére pedig -t írj ki! Mindkét esetben használj LaTeX interpretert!
+Adj jelmagyarázatot a harmadik plothoz, , ,  hivatkozásokkal. A függvények sorszámai legyenek alsó indexben. A legend tájolása legyen É-i elhelyezkedésű. Használj LaTeX interpretert! Szorzásjelet a \cdot kifejezéssel lehet írni.
+
+```matlab
+function [x, f1, f2, f3] =  f_2_1()
+  x = 0:0.055:14.5;
+  f1 = sin(8*x);
+  f2 = 0.5 * cos(9.5 * x);
+  f3 = f1 .* f2;
+end
+
+function [abra, p1, p2, p3] = f_2_2(x, f1, f2, f3)
+  abra = figure;
+  subplot(1, 3, [1]);
+  p1 = plot(x, f1, '--m', 'Marker', 'x', 'LineWidth', 1.5);
+  xlabel('$x$', 'Interpreter', 'latex');
+  ylabel('$1.0sin(8.0x)$', 'Interpreter', 'latex');
+  subplot(1, 3, [2]);
+  p2 = plot(x, f2, '.-r', 'Marker', 'diamond', 'LineWidth', 1.2);
+  xlabel('$x$', 'Interpreter', 'latex');
+  ylabel('$0.5sin(9.5x)$', 'Interpreter', 'latex');
+  subplot(1, 3, [3]);
+  p3 = plot( ...
+      x, f1, '--m', ...
+      x, f2, '.-r', ...
+      x, f3, ':g');
+  p3(1).Marker = 'x';
+  p3(1).LineWidth = 1.5;
+  p3(2).Marker = 'diamond';
+  p3(2).LineWidth = 1.2;
+  p3(3).Marker = 'square';
+  p3(3).LineWidth = 1.3;
+  xlabel('$x$', 'Interpreter', 'latex');
+  ylabel('$y$', 'Interpreter', 'latex');
+  legend({'$f_1$', '$f_2$', '$f_3 = f_1\cdot f_2$'}, 'Location', 'north', 'Interpreter', 'latex');
+end
+```
+
+# 2021/ZH 1/III.
+
+Az első függvényben:
+olvasd be a pointCloud4.mat fájlból az x, y és z változókat! Ábrázold a pontfelhőt kék színnel és pont markerrel! Állítsd be a nézőpontot a következőképpen: azimuth=178 és elevation=33!
+A második függvényben:
+hozz létre egy térhálót ,  irányban a [-4.6, 5.2] intervallumon! A lépésköz legyen 0.6. (X és Y)
+A térháló minden pontjához rendeld hozzá a következő (Z) függvényt: 
+Az így létrejött függvényt ábrázold a meshc függvénnyel!
+Az xlimet és ylimet állítsd be -4.5 és 5.1 értékekre!
+A tengelyekre írd fel a tengely nevét (x, y, z), a plot címe pedig legyen a z függvény. Használj tizedespontot! A szorzásokat ne írd ki, a függvények pedig egyenes betűvel legyenek szedve. Használj latex interpretert (csak a címhez)!
+
+```matlab
+function [abra1, x, y, z] = f_3_1()
+  load('pointCloud4.mat', 'x', 'y', 'z');
+  abra1 = figure;
+  plot3(x, y, z, '.b');
+  view(178, 33);
+end
+
+function [abra2, X, Y, Z] = f_3_2()
+  abra2 = figure;
+  [X, Y] = meshgrid(-4.6:0.6:5.2, -4.6:0.6:5.2);
+  Z = 1.3 * sin(X) .* cos(Y);
+  meshc(X, Y, Z);
+  xlim([-4.5 5.1]);
+  ylim([-4.5 5.1]);
+  xlabel('x'); 
+  ylabel('y');
+  zlabel('z');
+  title('$1.3\sin(x)\cos(y)$', 'Interpreter', 'latex');
+end
+```
+
+# 2021/ZH 1/IV.
+
+Oldd meg beépített megoldófüggvény segítségével az alábbi differenciálegyenlet-rendszert: , , . A megoldás időintervalluma: [0 70] A változók kezdeti értékei: , , . A kimeneteket a t (időpontok) és az x (megoldások) nevű változókba mentsd el!
+
+```matlab
+function [t, x] = f_4_1()
+  f = @(~, y) [9*y(1)/2 + y(3); (3*y(1) - y(3))/4; -y(2)];
+  [t, x] = ode45(f, [0 70], [100 10 1/10]);
 end
 ```

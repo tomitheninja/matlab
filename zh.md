@@ -187,3 +187,135 @@ function [t, x] = f_4_1()
   [t, x] = ode45(f, [0 70], [100 10 1/10]);
 end
 ```
+
+# 2020/???/I.
+
+```matlab
+function [adat] = f_1_1(adatfajl)
+    adat = readtable('_adat.csv', 'Delimiter', ',');
+end
+
+function [sorok] = f_1_2(sorfajl)
+    sorok = readtable('M_sorok.xlsx', "ReadVariableNames", true);
+end
+
+function [oszlopok] = f_1_3(oszlopfajl)
+    oszlopok = readtable('_oszlopok.xlsx', "ReadVariableNames", true);
+end
+
+function [sorindex] = f_1_4(sorok)
+    sorindex = find(ismember(sorok.i, {'van', 'nem kell'}) | ismember(sorok.j, {'van', 'nem kell'} | ismember(sorok.k, {'van', 'nem kell'})));
+end
+
+function [oszlopindex] = f_1_5(oszlopok)
+    oszlopindex = find((oszlopok.e < 7 & oszlopok.f < 7));
+end
+
+function [adatmatrix] = f_1_6(adat, sorindex, oszlopindex)
+    adatmatrix = adat(sorindex, oszlopindex);
+end
+
+function [x] = f_1_7(adatmatrix, v)
+    x = v / adatmatrix;
+end
+
+function [sajatertek, sajatvektor] = f_1_8(adatmatrix)
+    sajatertek = eig(adatmatrix');
+    [A, B, C] = eig(adatmatrix');
+    sajatvektor = C;
+end
+
+function [leg] = f_1_9(sajatertek, sajatvektor)
+    index = imag(sajatertek) ~= 0;
+    [minimum I] = min(sajatertek(index));
+    leg = sajatvektor(:, I);
+end
+
+function [elemenkent] = f_1_10(adatmatrix)
+    elemenkent = log2(adatmatrix) .^ 3;
+end
+
+function [szorzat] = f_1_11(adatmatrix, u)
+    szorzat = adatmatrix .* u;
+end
+
+function f_1_12(adat, fajlnev)
+    reszt = array2table(adat(1:3, [1 4 5]));
+    nev = strcat(fajlnev, '.csv');
+    writetable(reszt, nev);
+end
+```
+
+# 2020/???/II.
+
+```matlab
+function [x, f1, f2, f3] = f_2_1()
+  x = 0:0.9:11;
+  f1 = 0.5 * sin(5 * x);
+  f2 = 4 * cos(5 * x);
+  f3 = f1 .^ f2;
+end
+
+function [abra, p1, p2, p3] = f_2_2(x, f1, f2, f3)
+  abra = figure;
+  p1 = subplot(1, 3, 1);
+  plot(x, f1, 'c--+', 'LineWidth', 1.8);
+  xlabel('$x$', 'interpreter', 'latex');
+  ylabel('$0.5\sin (5.0x)$', 'interpreter', 'latex');
+  p2 = subplot(1, 3, 2);
+  plot(x, f2, 'c--d', 'LineWidth', 1.8);
+  xlabel('$x$', 'interpreter', 'latex');
+  ylabel('$4.0\cos (5.0x)$', 'interpreter', 'latex');
+  p3 = subplot(1, 3, 3);
+  plot(x, f1, 'c--+', 'LineWidth', 1.8);
+  hold on;
+  plot(x, f2, 'c--d', 'LineWidth', 1.8);
+  plot(x, f3, 'g--o', 'LineWidth', 1.8);
+  xlabel('$x$', 'interpreter', 'latex');
+  ylabel('$y$', 'interpreter', 'latex');
+  legend('$f_{1}$', '$f_{2}$', '$f_{3}=f_{1}^{f_{2}}$', 'interpreter', 'latex', 'Location', 'north');
+end
+```
+
+# 2020/???/III.
+
+```matlab
+function [abra1, XYZ] = f_3_1()
+    load('pointCloud1.mat');
+    abra1 = figure;
+    plot3(x, y, z, 'm.');
+    view(227, 27);
+end
+
+function [abra2, XYZ] = f_3_2()
+    [X Y] = meshgrid(- 4.7:0.3:4.7, - 4.7:0.3:4.7);
+    Z = 0.6 * sin(X) .* cos(Y);
+    abra2 = figure;
+    contour(X, Y, Z);
+    xlim([- 4.6, 4.6]);
+    ylim([- 4.6, 4.6]);
+    xlabel('x');
+    ylabel('y');
+    title('$0.6\sin(X)\cos(Y)$', 'interpreter', 'latex');
+end
+```
+
+# 2020/???/IV.
+
+```matlab
+function [t, x] = f_4_1()
+    tm = [0:20];
+    a = 33;
+    b = 67 / 10;
+    c = 3 / 10;
+    x0 = [a; b; c];
+    %M=[b/3-9/2,0,0;0,1-a/2,0;0,0,2-((a+b)/7)];
+    M = @(t, y) [(y(2) / 3 - 9 / 2) * y(1);
+    (1 - + y(1) / 2) * y(2);
+    y(3) * (2 - ((y(1) + y(2)) / 7))];
+    %fv = @(t, x) M*x;
+    [t45 x45] = ode45(M, tm, x0);
+    t = t45;
+    x = x45;
+end
+```
